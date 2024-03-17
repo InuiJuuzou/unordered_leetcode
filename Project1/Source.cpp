@@ -146,29 +146,34 @@ private:
         ListNode(int x) : val(x), next(nullptr) {}
         ListNode(int x, ListNode* next) : val(x), next(next) {}
     };
+
     vector<list<int>> arr;
+
     size_t hasher(int key)
     {
         return key/3;
     }
+
     bool find_elem(int key)
     {
         size_t index = hasher(key);
-        if (std::find(arr[index].begin(), arr[index].end(), key) != arr[index].end())
-        {
+        if (find(arr.at(index).begin(), arr.at(index).end(), key) != arr.at(index).end())
             return true;
-        }
         return false;
     }
 public:
     MyHashSet() {
-
+        arr.resize(1000);
+        for (size_t i = 0; i < 1000; ++i)
+        {
+            arr.at(i).resize(50);
+        }
     }
 
     void add(int key) {
         size_t index = hasher(key);
         if(!find_elem(key))
-            arr[index].push_back(key);
+            arr.insert(arr.begin() + index, { key });
         
     }
 
@@ -178,7 +183,7 @@ public:
     }
 
     bool contains(int key) {
-
+        return find_elem(key);
     }
 };
 
@@ -218,5 +223,9 @@ void test_commonChars()
 int main()
 {
     test_commonChars();
-    cout << 99999 % 3;
+    MyHashSet m;
+    m.add(1);
+    m.add(2);
+    cout << m.contains(1) << " " << m.contains(3) << " ";
+    
 }
