@@ -1,3 +1,5 @@
+п»їп»ї#pragma execution_character_set("utf-8")
+
 #include <iostream>
 #include<vector>
 #include<unordered_map>
@@ -114,7 +116,7 @@ public:
         }
         return result;
     }
-    //решение с гистограммой(не мое)
+    //СЂРµС€РµРЅРёРµ СЃ РіРёСЃС‚РѕРіСЂР°РјРјРѕР№(РЅРµ РјРѕРµ)
     vector<vector<string>> groupAnagramsGistogram(vector<string>& strs)
     {
         unordered_map<string, vector<string>> group;
